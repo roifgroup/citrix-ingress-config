@@ -19,7 +19,13 @@ kubectl apply -f cic2/guestbook-ingress.yaml
 kubectl get ingress
 ```
 
-![](https://)
+### *The result should be:*
+```
+alexa@k3s1:~/citrix-ingress-config$ kubectl get ingress
+NAME                 CLASS   HOSTS                ADDRESS         PORTS   AGE
+guestbook-ingress    cic1    www.guestbook.com    192.168.5.191   80      25m
+guestbook-ingress2   cic2    www.guestbook2.com   192.168.6.213   80      21m
+```
 
 ### *Running the following commands should give you the following results:*
 ```
@@ -27,7 +33,16 @@ curl -s -H "Host: www.guestbook.com" http://IP | grep Guestbook
 curl -s -H "Host: www.guestbook2.com" http://IP | grep Guestbook
 ```
 
-![](https://)
+### *The result should be:*
+```
+alexa@k3s1:~/citrix-ingress-config$ curl -s -H "Host: www.guestbook.com" http://192.168.5.191 | grep Guestbook
+    <title>Guestbook</title>
+      <h2>Guestbook</h2>
+
+alexa@k3s1:~/citrix-ingress-config$ curl -s -H "Host: www.guestbook2.com" http://192.168.6.213 | grep Guestbook
+    <title>Guestbook</title>
+      <h2>Guestbook</h2>
+```
 
 
 
