@@ -1,0 +1,30 @@
+cic:
+  enabled: true
+  ipam:
+    ipamCtlName: "citrix-ipam-controller"
+  nsPort: 443
+  nsProtocol: HTTPS
+  nsIP: 192.168.5.150
+  adcCredentialSecret: nslogin
+  entityPrefix: k8s
+  image: 'quay.io/citrix/citrix-k8s-ingress-controller:1.28.2'
+  pullPolicy: IfNotPresent
+  license:
+    accept: 'Yes'
+  ingressClass:
+    - cic1
+  serviceClass:
+    - cic1
+  logLevel: DEBUG
+  cicSettings:
+    required: true
+    cicConfig:
+      NS_HTTP2_SERVER_SIDE: 'OFF'
+      NS_COOKIE_VERSION: '0'
+  crds:
+    install: true
+ipam:
+  enabled: true
+  image: 'quay.io/citrix/citrix-ipam-controller:1.0.3'
+  pullPolicy: IfNotPresent
+  vipRange: '[{"one": ["192.168.5.190-192.168.5.200"]}, {"two": ["192.168.6.210-192.168.6.215"]}]'

@@ -1,0 +1,28 @@
+apiVersion: networking.k8s.io/v1
+kind: IngressClass
+metadata:
+  name: cic2
+spec:
+  controller: citrix.com/ingress-controller
+
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    ingress.citrix.com/ipam-range: "two"
+  name: guestbook-ingress2
+spec:
+  ingressClassName: cic2
+  rules:
+  - host:  www.guestbook2.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: frontend
+            port: 
+              number: 80
+---
