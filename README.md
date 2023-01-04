@@ -2,6 +2,7 @@
 Notes:
 1. This assumes you already created the secrets required and the users in VPX are configured with the correct policy.
 2. This also assume you created static routes in the VPX to allow health checks
+3. *This is not a complete deployment as it requires node-controller instead of the static routes to be full production ready*
 
 ### *Execute the following commands:*
 ```
